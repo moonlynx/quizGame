@@ -1,0 +1,61 @@
+html,
+body,
+#app
+{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.gameBoard {
+    position: relative;
+    top: 10px;
+    width: 400px;
+    height: 600px;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
+.gameScore,
+.gameMotiv,
+.gameQuest
+{
+    height: 20%;
+}
+
+.gameAnswers > div
+{
+    margin: 5px;
+}
+
+.gameAnswers__answer
+{
+    padding: 2px;
+    cursor: pointer;
+}
+
+.gameAnswers__answer:hover {
+    background-color: gray;
+}
+
+.gameScore__winScore,
+.gameScore__lostScore
+{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.gameScore__winScore
+{
+    color: green;
+}
+
+.gameScore__lostScore
+{
+    color: red;
+}
