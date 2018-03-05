@@ -1,9 +1,16 @@
 import React from 'React';
+import PropTypes from 'prop-types';
 
-export default class Motiv extends React.Component {
+class Motiv extends React.Component {
   render() {
     return (<div className='gameMotiv'>
               <span>{this.props.mString}</span>
             </div>);
   }
 }
+
+Motiv.propTypes = {
+  mString: PropTypes.string.isRequired
+}
+
+export default Motiv;

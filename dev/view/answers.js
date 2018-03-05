@@ -1,6 +1,7 @@
 import React from 'React';
+import PropTypes from 'prop-types';
 
-export default class Answers extends React.Component {
+class Answers extends React.Component {
   render() {
     let clickHandler = this.props.clickHandler;
 
@@ -15,3 +16,10 @@ export default class Answers extends React.Component {
             </div>);
   }
 }
+
+Answers.propTypes = {
+  answers: PropTypes.array.isRequired,
+  clickHandler: PropTypes.func.isRequired
+}
+
+export default Answers;

@@ -1,6 +1,7 @@
 import React from 'React';
+import PropTypes from 'prop-types';
 
-export default class Score extends React.Component {
+class Score extends React.Component {
   render() {
     return  <div className='gameScore'>
               <span className="gameScore__winScore">{this.props.wins}</span>
@@ -9,3 +10,10 @@ export default class Score extends React.Component {
             </div>
   }
 }
+
+Score.propTypes = {
+  wins: PropTypes.number.isRequired,
+  losts: PropTypes.number.isRequired
+}
+
+export default Score;
