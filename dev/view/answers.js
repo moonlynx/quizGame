@@ -2,7 +2,7 @@ import React from 'React';
 
 export default class Answers extends React.Component {
   render() {
-    let clickHandler = this.props.onClick;
+    let clickHandler = this.props.clickHandler;
 
     let questAnswers = this.props.answers.map((answer, i) => {
       return (<div key={i}>
