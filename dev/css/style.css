@@ -8,7 +8,8 @@ body,
     height: 100%;
 }
 
-.gameBoard {
+.gameBoard
+{
     position: relative;
     top: 10px;
     width: 400px;
@@ -28,6 +29,11 @@ body,
     height: 20%;
 }
 
+.gameScore
+{
+    margin-top:20px;
+}
+
 .gameAnswers > div
 {
     margin: 5px;
@@ -44,18 +50,60 @@ body,
 }
 
 .gameScore__winScore,
-.gameScore__lostScore
+.gameScore__lostScore,
+.EndGame__wins,
+.EndGame__losts
 {
     font-size: 1.3em;
     font-weight: bold;
 }
 
-.gameScore__winScore
+.gameScore__winScore,
+.gameScore__lostScore,
+.EndGame__wins > span,
+.EndGame__losts > span
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.gameScore__winScore,
+.EndGame__wins > span
 {
     color: green;
 }
 
-.gameScore__lostScore
+.gameScore__lostScore,
+.EndGame__losts > span
 {
     color: red;
+}
+
+.EndGame__wins,
+.EndGame__losts,
+.newGameButton
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.newGameButton
+{
+    width: 300px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.EndGame__wins
+{
+    margin-top: 250px;
+}
+
+.EndGame__losts
+{
+    margin-top: 300px;
 }
