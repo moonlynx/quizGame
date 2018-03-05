@@ -12,21 +12,20 @@ export default class GameBoard extends React.Component {
     super(props);
     
     this.state = {
-      newGame: true,
-      endGame: false,
+      gameStage: "NewGame",
       questNumber: 0,
       wins: 0,
       losts: 0,
       motiv: ''
     }
-    
+
     this.verifyAnswer = this.verifyAnswer.bind(this);
-    this.newGameClickHandler = this.newGameClickHandler.bind(this);
+    this.setGameStage = this.setGameStage.bind(this);
   }
 
-  newGameClickHandler() {
+  setGameStage(stage) {
     this.setState({
-      newGame: false
+      gameStage: stage
     });
   }
 
@@ -46,7 +45,6 @@ export default class GameBoard extends React.Component {
   }
 
   verifyAnswer(answer) {
-        
     if (answer == Questions[this.state.questNumber].rightAnswer) {
       this.setState({
         wins: this.state.wins + 1,
@@ -59,25 +57,38 @@ export default class GameBoard extends React.Component {
       });
     }
 
-    this.setState({questNumber: this.state.questNumber + 1});
+    if (this.state.questNumber == Questions.length - 1) {
+      this.setGameStage("EndGame");
+    } else {
+      this.setState({questNumber: this.state.questNumber + 1});
+    }
   }
 
   render() {
-    let menu;
 
-    if (this.state.newGame) {
-      menu =  <button onClick={this.newGameClickHandler}>New Game</button>;
+    let gameStagesTemplates = {
+            "NewGame":  <button 
+                          onClick = {() => {this.setGameStage("Game")}}
+                          className = "newGameButton">
+                          Новая игра
+                        </button>,
 
-    } else {
-      menu =  [<Score wins={this.state.wins} losts={this.state.losts} key="Score" />,
-              <Motiv mString={this.state.motiv} key="Motiv" />,
-              <Quest quest={Questions[this.state.questNumber].question} key="Quest" />,
-              <Answers answers={Questions[this.state.questNumber].answers} onClick={this.verifyAnswer} key="Answers" />];
+            "Game":[
+                  <Score wins={this.state.wins} losts={this.state.losts} key="Score" />,
+                  <Motiv mString={this.state.motiv} key="Motiv" />,
+                  <Quest quest={Questions[this.state.questNumber].question} key="Quest" />,
+                  <Answers answers={Questions[this.state.questNumber].answers} clickHandler={this.verifyAnswer} key="Answers" />
+                ],
+                
+            "EndGame": [
+                  <div className = "EndGame__wins" key="wins">Правильных ответов:<span>{this.state.wins}</span></div>,
+                  <div className = "EndGame__losts" key="losts">Неправильных ответов:<span>{this.state.losts}</span></div>
+                ]
     }
 
     return (
       <div className='gameBoard'>
-        {menu}
+        {gameStagesTemplates[this.state.gameStage]}
       </div>
     )
   }
