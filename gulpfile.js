@@ -44,8 +44,7 @@ gulp.task('css', () => {
            .pipe(connect.reload());
 });
 
-//gulp.task('build', gulp.parallel(gulp.series('render', 'minify'), 'html'));
-gulp.task('build', gulp.parallel('render', 'html', 'css'));
+gulp.task('build', gulp.parallel(gulp.series('render', 'minify'), 'html', 'css'));
 
 gulp.task('server', () => {
     return connect.server(serverOpt);
@@ -57,4 +56,4 @@ gulp.task('watch', () => {
     gulp.watch(['dev/css/*.css'], gulp.series('css'));
 });
 
-gulp.task('default', gulp.parallel('server', 'watch'));
+gulp.task('default', gulp.parallel('build', 'server', 'watch'));
