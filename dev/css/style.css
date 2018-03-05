@@ -29,6 +29,12 @@ body,
     height: 20%;
 }
 
+.gameQuest
+{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
 .gameScore
 {
     margin-top:20px;
